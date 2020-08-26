@@ -6,9 +6,11 @@ def loadAir():
     airports = []
 
     with open('Airports.txt') as csvFile:
-        spamReader = csv.reader(csvFile, delimiter=',')
+        spamReader = csv.reader(csvFile, delimiter=',') # todo WHY SPAM READER???
+        # spamREader is essentially the whiole text, the line creates a 2d list seperated by the line end and the
+        # inner lists are seperated by the delimiter
 
-        for row in spamReader:
+        for row in spamReader:  #
             # print(', '.join(row)) #prints row from file
             airports.append(row)
     return airports
@@ -172,7 +174,7 @@ Flight profit = {flightProfit}
 
     pass
 
-def menu_patryk():
+def menuCycle():
     """second version of the menu, returns back to the menu after use"""
 
     destAir = None
@@ -190,6 +192,7 @@ def menu_patryk():
         """this loop puts the function at an infinite loop provided that the user doesn't end it"""
 
         print("""\
+        
         Your choices are:  
 		    a. Airport details
 		    b. Flight details
@@ -203,7 +206,8 @@ def menu_patryk():
         if inp == "a":  # airport details, plans the starting and destination airports
             """funtion for menu item 'a'"""
             startAir, destAir, dist = flightPlan(airports)  # saves info from flightPlan() into variables
-            # in form of tuples
+            # in form of strings now, due to the fact that there are multiple variables waiting for the
+            # outputed info in a certain order
 
         elif inp == "b":  # flight details, what plane used
             """funtion for menu item 'b'"""
@@ -217,6 +221,7 @@ def menu_patryk():
                        costPSeat, maxDist, maxCap,
                        minFirstClass, numFirstClass,
                        numStandClass)
+
 
 
         elif inp == "d":  # clears data
@@ -243,4 +248,4 @@ def menu_patryk():
             print("ERROR")
 
 
-menu_patryk()
+menuCycle()
