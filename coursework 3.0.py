@@ -60,7 +60,7 @@ def flightPlan(airports):  # option a
     for n in airports:  # searches through the 2d list for the appropriate airport through iteration
 
         if n[0] == destAir:
-            print("Flight destination:", n[1])  # outsputs the end location of the flight
+            print("Flight destination:", n[1])  # outputs the end location of the flight
 
             """decides on distance from starting airport and destination airport"""
             if startingAir == "LPL":
@@ -88,7 +88,7 @@ def flightDetails():  # option b
     pType = pType.lower()
     pTypes = ["s", "m", "l"]
     if pType not in pTypes:
-        print("ERROR//WRONG PLANE TYPE")
+        print("ERROR//NOT A PLANE TYPE")
         return None, None, None, None, None, None
 
     if pType == "s":  # data for small plane type
@@ -118,10 +118,11 @@ def flightDetails():  # option b
 """)
 
     numFirstClass = int(input("How many first class seat do you want? "))
-    if numFirstClass >= minFirstClass and numFirstClass < (0.5 * maxCap):  # checks if:
+    if minFirstClass <= numFirstClass < (0.5 * maxCap):
+        # checks if:
         # number of first class is more than minimum and
         # if number of first class is less than limit
-        numStandClass = (maxCap - (2 * numFirstClass))
+        numStandClass = maxCap - (2 * numFirstClass)
     else:  # error message if out of bounds
         print(f"ERROR//CANNOT HAVE LESS THAN {minFirstClass}")
         return None, None, None, None, None, None
@@ -204,18 +205,18 @@ Your choices are:
         inp = str(input("So where do you want to go? "))  # input string for menu
 
         if inp == "a":  # airport details, plans the starting and destination airports
-            """funtion for menu item 'a'"""
+            """function for menu item 'a'"""
             startAir, destAir, dist = flightPlan(airports)  # saves info from flightPlan() into variables
             # in form of tuples
 
         elif inp == "b":  # flight details, what plane used
-            """funtion for menu item 'b'"""
+            """function for menu item 'b'"""
             costPSeat, maxDist, maxCap, minFirstClass, numFirstClass, numStandClass = flightDetails()  # saves info
             # from flightDetails() into variables in form of tuples
 
 
         elif inp == "c":  # price plan and profit, calculates costs and income, and so profit
-            """funtion for menu item 'c'"""
+            """function for menu item 'c'"""
             pricePlanAndProfit(startAir, destAir, dist,
                                costPSeat, maxDist, maxCap,
                                minFirstClass, numFirstClass,
@@ -223,7 +224,7 @@ Your choices are:
 
 
         elif inp == "d":  # clears data
-            """funtion for menu item 'd'"""
+            """function for menu item 'd'"""
             destAir = None
             startAir = None
             dist = None
@@ -237,8 +238,8 @@ Your choices are:
             print("You've cleared the data. ")
 
         elif inp == "e":
-            """funtion for menu item 'e'"""
-            quitProgram()  # starts the 'quit()' funtion
+            """function for menu item 'e'"""
+            quitProgram()  # starts the 'quit()' function
             return 0  # changes it so that the while loop ends by changing the Bool
 
         else:

@@ -18,4 +18,10 @@ def loadAir():
             airports.append(row)
     return airports
 
-loadAir()
+maxCap = 500
+numFirstClass = 100
+
+
+numStandClass = maxCap - (2 * numFirstClass)
+
+print(numStandClass)
